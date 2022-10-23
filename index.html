@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://*.grammarly.com; style-src 'self' 'unsafe-inline'; img-src data: https://*.grammarly.com; connect-src https://*.grammarly.com https://*.grammarly.io wss://*.grammarly.com" />
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://js.grammarly.com; style-src 'unsafe-inline'; img-src data: https://*.grammarly.com; connect-src * 'unsafe-inline'">
+    <title>grammar-helper</title>
+    <style>
+      @font-face {
+        font-family: 'Inter';
+        src: url('./assets/Inter-Regular.woff');
+      }
+
+      html, body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        font-family: 'Inter';
+      }
+
+      textarea {
+        font: inherit;
+        line-height: 1.5;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        box-sizing: border-box;
+        padding: 24px;
+        background-color: #FFFBE7;
+        /* overflow: auto; */
+      }
+
+      *:focus {
+        outline: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <grammarly-editor-plugin config.oauthRedirectUri="grammar-helper://grammarly-auth/">
+      <textarea>
+The basics
+
+Mispellings and grammatical errors can effect your credibility. The same goes for misused commas, and other types of punctuation . Not only will Grammarly underline these issues in red, it will also showed you how to correctly write the sentence.
+
+Underlines that are blue indicate that Grammarly has spotted a sentence that is unnecessarily wordy. You'll find suggestions that can possibly help you revise a wordy sentence in an effortless manner.
+
+But wait...there's more?
+
+Grammarly can give you very helpful feedback on your writing. Passive voice can be fixed by Grammarly, and it can handle classical word-choice mistakes.
+
+It can even help when you wanna refine ur slang or formality level. That's especially useful when writing for a broad audience ranging from businessmen to friends and family, don't you think? It'll inspect your vocabulary carefully and suggest the best word to make sure you don't have to analyze your writing too much.
+      </textarea>
+    </grammarly-editor-plugin>
+    <script src="https://unpkg.com/@grammarly/editor-sdk?clientId=client_DdqbYgj6QTPg42Ypgo2pmi"></script>
+    <script>
+      Grammarly.init().then((grammarly) => {
+        window.registerGrammarlyAuthCallback(url => {
+          grammarly.handleOAuthCallback(url);
+        })
+      });
+    </script>
+  </body>
+</html>

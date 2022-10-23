@@ -1,0 +1,24 @@
+{
+  "name": "grammar-helper",
+  "version": "1.0.0",
+  "description": "grammarly notepad on desktop",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "author": "Eric Wang",
+  "license": "ISC",
+  "build": {
+    "appId": "xyz.ericwang.grammar-helper",
+    "mac": {
+      "category": "public.app-category.productivity"
+    }
+  },
+  "devDependencies": {
+    "electron": "^21.1.1",
+    "electron-builder": "^23.6.0",
+    "electron-icon-maker": "^0.0.5"
+  }
+}
